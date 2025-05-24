@@ -1,0 +1,138 @@
+/* General body and container styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px 40px;
+  width: 400px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+/* Headings */
+h2 {
+  margin-bottom: 25px;
+  color: #1e3c72;
+  font-weight: 700;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+h3 {
+  color: #1e3c72;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+/* Form elements */
+select, button {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 2px solid #74ebd5;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+select:focus, button:focus {
+  outline: none;
+  border-color: #1e3c72;
+  box-shadow: 0 0 5px #1e3c72;
+}
+
+button {
+  background-color: #1e3c72;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 25px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: #74ebd5;
+  color: #1e3c72;
+  border: 2px solid #1e3c72;
+}
+
+/* Lists for recommendations */
+ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+/* Each precaution or food item with icon */
+ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #444;
+}
+
+/* Images inside list items */
+ul li img {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+/* Scrollbar styling for lists */
+ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+ul::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: #74ebd5;
+  border-radius: 8px;
+}
+
+ul::-webkit-scrollbar-thumb:hover {
+  background: #1e3c72;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 460px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+}

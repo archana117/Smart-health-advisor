@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Select Disease</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+  <h2>Select Disease</h2>
+  <form id="diseaseForm">
+    <select id="disease" required>
+      <option value="">-- Choose Disease --</option>
+      <option value="BP">BP (Blood Pressure)</option>
+      <option value="Sugar">Sugar (Diabetes)</option>
+      <option value="Thyroid">Thyroid</option>
+      <option value="Obesity">Obesity</option>
+    </select>
+    <button type="submit">Next</button>
+  </form>
+</div>
+<script>
+document.getElementById('diseaseForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const disease = document.getElementById('disease').value;
+  if(disease) {
+    window.location.href = `parameters.html?disease=${encodeURIComponent(disease)}`;
+  }
+});
+</script>
+</body>
+</html>

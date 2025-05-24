@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Select Disease Level</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+  <h2>Select Level for <span id="diseaseName"></span></h2>
+  <form id="levelForm">
+    <select id="level" required>
+      <option value="">-- Choose Level --</option>
+      <option value="Mild">Mild</option>
+      <option value="Moderate">Moderate</option>
+      <option value="Severe">Severe</option>
+    </select>
+    <button type="submit">Get Recommendations</button>
+  </form>
+</div>
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const disease = urlParams.get('disease');
+document.getElementById('diseaseName').textContent = disease || 'Disease';
+
+document.getElementById('levelForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const level = document.getElementById('level').value;
+  if(level) {
+    window.location.href = `results.html?disease=${encodeURIComponent(disease)}&level=${encodeURIComponent(level)}`;
+  }
+});
+</script>
+</body>
+</html>

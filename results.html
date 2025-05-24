@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recommendations</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Recommendations for <span id="summary"></span></h2>
+    <section>
+      <h3>Precautions</h3>
+      <ul id="precautions"></ul>
+    </section>
+    <section>
+      <h3>Recommended Foods</h3>
+      <ul id="foods"></ul>
+    </section>
+  </div>
+
+  <script>
+    const recommendations = {
+      BP: {
+        Mild: {
+          precautions: [
+            { text: "Limit salt intake", img: "https://www.pritikin.com/wp/wp-content/uploads/2013/11/eat-less-salt.jpg" },
+            { text: "Exercise regularly", img: "https://img.icons8.com/color/48/running.png" },
+            { text: "Avoid stress", img: "https://medvisit.io/wp-content/uploads/2019/01/avoid-stress-scaled.jpg" }
+          ],
+          foods: [
+            { text: "Leafy greens", img: "https://img.icons8.com/color/48/lettuce.png" },
+            { text: "Bananas", img: "https://img.icons8.com/color/48/banana.png" },
+            { text: "Beets", img: "https://tse2.mm.bing.net/th?id=OIP.3yD8WF-8m-fLtnRHkr_quAHaFS&pid=Api&P=0&h=220" }
+          ]
+        },
+        Moderate: {
+          precautions: [
+            { text: "Monitor BP daily", img: "https://img.icons8.com/color/48/heart-health.png" },
+            { text: "Avoid caffeine & alcohol", img: "https://img.icons8.com/color/48/no-alcohol.png" },
+            { text: "Maintain weight", img: "https://images.hindustantimes.com/img/2023/01/20/550x309/healthy_weight_1674201407133_1674201417707_1674201417707.jpg" }
+          ],
+          foods: [
+            { text: "Oats", img: "https://tse1.mm.bing.net/th?id=OIP.BuSKTMQChdSaNbsfxGoBLQHaE8&pid=Api&P=0&h=220" },
+            { text: "Garlic", img: "https://img.icons8.com/color/48/garlic.png" },
+            { text: "Low-fat dairy", img: "https://img.icons8.com/color/48/milk-bottle.png" }
+          ]
+        },
+        Severe: {
+          precautions: [
+            { text: "Take prescribed meds", img: "https://img.icons8.com/color/48/pill.png" },
+            { text: "Strict salt restriction", img: "https://www.pritikin.com/wp/wp-content/uploads/2013/11/eat-less-salt.jpg" },
+            { text: "Consult cardiologist", img: "https://img.icons8.com/color/48/doctor-female.png" }
+          ],
+          foods: [
+            { text: "Whole grains", img: "https://wholegrainscouncil.org/sites/default/files/thumbnails/image/Fotolia_72510345_M_oats.jpg" },
+            { text: "Berries", img: "https://tse1.mm.bing.net/th?id=OIP.KmzQJIuZXLo6f4quNbwZbwHaHa&pid=Api&P=0&h=220" },
+            { text: "Dark chocolate (small amounts)", img: "https://img.icons8.com/color/48/chocolate-bar.png" }
+          ]
+        }
+      },
+      Sugar: {
+        Mild: {
+          precautions: [
+            { text: "Avoid sugary snacks", img: "https://img.icons8.com/color/48/no-sweets.png" },
+            { text: "Walk after meals", img: "https://img.icons8.com/color/48/walking.png" },
+            { text: "Stay hydrated", img: "https://img.icons8.com/color/48/water.png" }
+          ],
+          foods: [
+            { text: "Whole grains", img: "https://img.icons8.com/color/48/grain.png" },
+            { text: "Nuts", img: "https://img.icons8.com/color/48/almond.png" },
+            { text: "Non-starchy vegetables", img: "https://img.icons8.com/color/48/broccoli.png" }
+          ]
+        },
+        Moderate: {
+          precautions: [
+            { text: "Use glucose monitor", img: "https://img.icons8.com/color/48/glucose-meter.png" },
+            { text: "Limit carbs", img: "https://img.icons8.com/color/48/no-bread.png" },
+            { text: "Regular check-ups", img: "https://img.icons8.com/color/48/doctor-male.png" }
+          ],
+          foods: [
+            { text: "Beans", img: "https://img.icons8.com/color/48/beans.png" },
+            { text: "Leafy greens", img: "https://img.icons8.com/color/48/lettuce.png" },
+            { text: "Low-GI fruits", img: "https://img.icons8.com/color/48/apple.png" }
+          ]
+        },
+        Severe: {
+          precautions: [
+            { text: "Insulin management", img: "https://img.icons8.com/color/48/insulin.png" },
+            { text: "Frequent monitoring", img: "https://img.icons8.com/color/48/heart-health.png" },
+            { text: "Avoid processed food", img: "https://img.icons8.com/color/48/no-fast-food.png" }
+          ],
+          foods: [
+            { text: "Quinoa", img: "https://img.icons8.com/color/48/quinoa.png" },
+            { text: "Fish", img: "https://img.icons8.com/color/48/fish-food.png" },
+            { text: "Chia seeds", img: "https://img.icons8.com/color/48/chia-seeds.png" }
+          ]
+        }
+      },
+      Thyroid: {
+        Mild: {
+          precautions: [
+            { text: "Regular thyroid test", img: "https://img.icons8.com/color/48/test-tube.png" },
+            { text: "Avoid excess soy", img: "https://img.icons8.com/color/48/soy-sauce.png" },
+            { text: "Exercise", img: "https://img.icons8.com/color/48/running.png" }
+          ],
+          foods: [
+            { text: "Eggs", img: "https://img.icons8.com/color/48/egg.png" },
+            { text: "Dairy", img: "https://img.icons8.com/color/48/milk-bottle.png" },
+            { text: "Iodine-rich foods", img: "https://img.icons8.com/color/48/seaweed.png" }
+          ]
+        },
+        Moderate: {
+          precautions: [
+            { text: "Take meds on empty stomach", img: "https://img.icons8.com/color/48/pills.png" },
+            { text: "Avoid raw cruciferous veggies", img: "https://img.icons8.com/color/48/broccoli.png" },
+            { text: "Reduce gluten", img: "https://img.icons8.com/color/48/wheat.png" }
+          ],
+          foods: [
+            { text: "Fish", img: "https://img.icons8.com/color/48/fish-food.png" },
+            { text: "Berries", img: "https://img.icons8.com/emoji/48/grapes.png" },
+            { text: "Brazil nuts", img: "https://img.icons8.com/color/48/nuts.png" }
+          ]
+        },
+        Severe: {
+          precautions: [
+            { text: "Strict medication adherence", img: "https://img.icons8.com/color/48/pill.png" },
+            { text: "Consult endocrinologist", img: "https://img.icons8.com/color/48/doctor-male.png" },
+            { text: "Limit goitrogens", img: "https://img.icons8.com/color/48/broccoli.png" }
+          ],
+          foods: [
+            { text: "Seafood", img: "https://img.icons8.com/color/48/shrimp.png" },
+            { text: "Yogurt", img: "https://img.icons8.com/color/48/yogurt.png" },
+            { text: "Pumpkin seeds", img: "https://img.icons8.com/color/48/pumpkin.png" }
+          ]
+        }
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const disease = params.get("disease");
+    const level = params.get("level");
+
+    const data = recommendations[disease]?.[level];
+
+    document.getElementById("summary").innerText = `${disease} - ${level}`;
+
+    if (data) {
+      const precautionsList = document.getElementById("precautions");
+      const foodsList = document.getElementById("foods");
+
+      data.precautions.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `<img src="${item.img}" alt="${item.text}" /><span>${item.text}</span>`;
+        precautionsList.appendChild(li);
+      });
+
+      data.foods.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `<img src="${item.img}" alt="${item.text}" /><span>${item.text}</span>`;
+        foodsList.appendChild(li);
+      });
+    } else {
+      document.querySelector(".container").innerHTML = "<p>Invalid input. Please go back and try again.</p>";
+    }
+  </script>
+</body>
+</html>
+
+
